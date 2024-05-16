@@ -13,9 +13,9 @@
   ];
 
    services.phpfpm.pools."caddy" = {
-    user = "caddy";
     settings = {
-      "listen.owner" = config.services.caddy.user;
+      "listen.owner" = "caddy";
+      "listenMode" = 0660;
       "pm" = "dynamic";
       "pm.max_children" = 32;
       "pm.max_requests" = 500;
@@ -29,18 +29,34 @@
     phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
   };
 
-
+  services.dnsmasq = {
+    enable = true;
+    extraConfig = ''
+      listen-address = 127.0.0.1
+      bind-interfaces
+      domain-needed
+      bogus-priv
+      address = /.test/127.0.0.1
+    '';
+  };
   services.caddy= {
     enable = true;
-    virtualHosts."localhost" = {
+    virtualHosts."*.test" = {
       extraConfig = ''
-        root    * /home/sn/Codes/teamify/public
+        root    * /home/sn/Codes/test/{host}/public
         encode gzip zstd
         file_server
-        php_fastcgi unix/${config.services.phpfpm.pools.caddy.socket}
+        php_fastcgi unix//var/run/phpfpm/phpfpm-caddy.socket}
       '';
     };
   };
 
+  # Ensure the caddy user exists
+  users.users.caddy = {
+    isSystemUser = true;
+   
+  };
+
+  users.groups.caddy = {};
 
 }

@@ -12,6 +12,7 @@
       ./fish.nix
       ./java.nix
       ./hyprland.nix
+      ./laravel.nix
     ];
  
   nix.settings = {
