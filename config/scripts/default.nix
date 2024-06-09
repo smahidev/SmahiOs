@@ -1,9 +1,0 @@
-{ config, pkgs, ...}:
-
-{
-  import = [
-   ./wlogout
-  ];
-
-  
-}

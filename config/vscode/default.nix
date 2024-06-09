@@ -2,7 +2,7 @@
 {
   programs.vscode.enable = true;
   
-  import = [
+  imports = [
     ./vscode-conf.nix
     ./vscode-exts.nix
   ];

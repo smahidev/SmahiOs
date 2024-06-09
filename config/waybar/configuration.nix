@@ -79,7 +79,7 @@
       "custom/exit" = {
         tooltip = false;
         format = "";
-        on-click = "sleep 0.1 && rofi -show power-menu -modi power-menu:rofi-power-menu";
+        on-click = "wlogout";
       };
       "custom/startmenu" = {
         tooltip = false;

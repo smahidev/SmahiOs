@@ -2,7 +2,7 @@
 
 {
 
-  import = [
+  imports = [
     ./hardware.nix
     ./laravel
   ];
@@ -53,8 +53,8 @@
   users.users.sn = {
     isNormalUser = true;
     description = "sn";
-    extraGroups = [ "networkmanager" "wheel" "caddy" "video"];
     shell = pkgs.fish;
+    extraGroups = [ "networkmanager" "wheel" "caddy" "video"];
     packages = with pkgs; [];
   };
 
@@ -95,15 +95,21 @@
 
   environment.systemPackages = with pkgs; [
     brightnessctl
+    nodejs_18
   ];
 
   programs.hyprland.enable = true;
+  programs.fish.enable = true;
   programs.java.enable = true;
+  programs.java.package = pkgs.jdk17;
+
 
   environment.sessionVariables = rec {
+    CHROME_EXECUTABLE = "${pkgs.brave}/bin/brave";
     ANDROID_HOME = "${androidSdk}/libexec/android-sdk";
     ANDROID_SDK_ROOT = "${androidSdk}/libexec/android-sdk";
     GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${androidSdk}/libexec/android-sdk/build-tools/34.0.0/aapt2";
+  
   };
  
   system.stateVersion = "23.11"; # Did you read the comment?

@@ -2,7 +2,7 @@
 {
   # Configure Kitty
   programs.kitty.enable = true;       
-   import = [
+   imports = [
     ./configuration.nix
     ./style.nix
    ];

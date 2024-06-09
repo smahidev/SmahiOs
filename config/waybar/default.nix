@@ -1,7 +1,7 @@
 { config, pkgs, ...}:
 {
    programs.waybar.enable = true;
-   import = [
+   imports = [
     ./configuration.nix
     ./style.nix
    ];

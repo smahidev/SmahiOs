@@ -1,8 +1,8 @@
 {...}:
 {
-    home.file.".config/fish/neofetch/config.conf".text = ''
-        print_info() {
-            prin "$(color 6)  SmahiOs 1.0"
+    home.file.".config/neofetch/config.conf".text = ''
+         print_info() {
+            prin "$(color 6)  SmahiOS 1.0"
             info underline
             info "$(color 7)  VER" kernel
             info "$(color 2)  UP " uptime

@@ -3,7 +3,7 @@
 
 {
   programs.wofi.enable = true;
-  import = [
+  imports = [
     ./configuration.nix
     ./style.nix
   ];

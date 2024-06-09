@@ -12,10 +12,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-colors.url = "github:misterio77/nix-colors";
+    ags.url = "github:Aylur/ags";
     
   };
 
-  outputs = { nixpkgs, home-manager, nix-colors, grub-theme, ... }: 
+  outputs = { nixpkgs, home-manager, nix-colors, grub-theme, ags, ... }: 
   let 
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -31,7 +32,7 @@
         toolsVersion = "26.1.1";
         cmdLineToolsVersion = "8.0";
         buildToolsVersions = [ "34.0.0" "30.0.3" ];
-        platformVersions = [ "34" "30" ];
+        platformVersions = [ "34" "31" ];
         extraLicenses = [
             "android-googletv-license"
             "android-sdk-arm-dbt-license"
@@ -57,7 +58,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = {
- 	              inherit nix-colors; inherit pkgs; inherit androidSdk;
+ 	              inherit nix-colors; inherit ags; inherit pkgs; inherit androidSdk;
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

@@ -18,6 +18,8 @@
       "editor.fontLigatures" = true;
       "editor.minimap.enabled" = false;
       "workbench.iconTheme" = "material-icon-theme";
+	  "dart.checkForSdkUpdates" = false;
+	  "debug.toolBarLocation" = "commandCenter";
     };
     
 }
