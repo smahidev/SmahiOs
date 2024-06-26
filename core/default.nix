@@ -57,6 +57,8 @@
     extraGroups = [ "networkmanager" "wheel" "caddy" "video"];
     packages = with pkgs; [];
   };
+  
+  services.udisks2.enable = true;
 
    # Audio 
   security.rtkit.enable = true;
